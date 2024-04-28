@@ -6,7 +6,7 @@ Steps to use:
 
 1. Download this repository and unzip somewhere on your computer.
 
-2. Put the Borderlands and No Man's Sky folders (or whichever you choose) into your Wingmanai User Directory.  This is typically **%AppData%/Roaming/ShipBit/[release number]/configs**:
+2. Put the Borderlands and No Man's Sky folders (or whichever you choose) into your Wingmanai User Directory.  This is typically **%AppData%/Roaming/ShipBit/WingmanAI/[release number]/configs**:
 
 ![image](https://github.com/teddybear082/teddybear_wingmanai_configs/assets/87204721/918d2f9a-3215-415c-804f-9103892b0213)
 
@@ -37,3 +37,5 @@ features:
 And change stt_provider to wingman_pro instead of whispercpp.
 
 7. Now run wingman AI and, if there were no installation errors in the insall, you should now be able to use these additional wingmen.
+
+8. Note that you can make further adjustments to the Wingmen, and possibly make the config changes above, with the WingmanAI user interface, and without manually editing the .yaml files.
