@@ -15,7 +15,7 @@ azure:
   tts:
     output_streaming: true
     region: westeurope
-    voice: en-US-JennyMultilingualV2Neural
+    voice: en-US-AndrewNeural
   whisper:
     api_base_url: https://openai-w-eu.openai.azure.com/
     api_version: 2024-02-15-preview
@@ -31,142 +31,65 @@ commands:
   - Conversation history cleared.
 - actions:
   - keyboard:
-      hold: 0.41
-      hotkey: i
+      hold: 0.3
+      hotkey: ctrl+n
       hotkey_codes:
-      - 23
+      - 29
+      - 49
       hotkey_extended: false
   force_instant_activation: false
   instant_activation:
-  - open the inventory
-  - open my inventory
-  - show me my inventory
-  - open inventory
+  - create new file
+  - make new file
   is_system_command: false
-  name: OpenInventory
-  responses: []
-- actions:
-  - keyboard:
-      hold: 0.53
-      hotkey: m
-      hotkey_codes:
-      - 50
-      hotkey_extended: false
-  force_instant_activation: false
-  instant_activation:
-  - open map
-  - open the map
-  - show me my map
-  is_system_command: false
-  name: OpenMap
-  responses: []
-- actions:
-  - keyboard:
-      hold: 0.55
-      hotkey: tab
-      hotkey_codes:
-      - 15
-      hotkey_extended: false
-  force_instant_activation: false
-  instant_activation:
-  - show echo
-  - show me my echo
-  - open echo
-  - open my echo
-  - open the echo
-  is_system_command: false
-  name: ShowEcho
-  responses: []
-- actions:
-  - keyboard:
-      hold: 0.5
-      hotkey: esc
-      hotkey_extended: false
-  force_instant_activation: false
-  instant_activation:
-  - open menu
-  - open the menu
-  - open my menu
-  - show me the menu
-  is_system_command: false
-  name: OpenMenu
-  responses: []
-- actions:
-  - keyboard:
-      hold: 0.53
-      hotkey: l
-      hotkey_codes:
-      - 38
-      hotkey_extended: false
-  force_instant_activation: false
-  instant_activation:
-  - open the log
-  - open my log
-  - show me my missions
-  - show missions
-  - show log
-  is_system_command: false
-  name: OpenMissionLog
-  responses: []
-- actions:
-  - keyboard:
-      hold: 0.36
-      hotkey: k
-      hotkey_codes:
-      - 37
-      hotkey_extended: false
-  force_instant_activation: false
-  instant_activation:
-  - show me my skills
-  - show skills
-  - what are my skills
-  - what skills do i have
-  - spend skills points
-  is_system_command: false
-  name: ShowSkills
-  responses: []
-- actions:
-  - keyboard:
-      hold: 0.5
-      hotkey: y
-      hotkey_codes:
-      - 21
-      hotkey_extended: false
-  force_instant_activation: false
-  instant_activation:
-  - open chat
-  - open my chat
-  - open the chat
-  is_system_command: false
-  name: OpenChat
+  name: NewFile
   responses: []
 - actions:
   - keyboard:
       hold: 0.3
-      hotkey: f4
+      hotkey: ctrl+o
       hotkey_codes:
-      - 62
+      - 29
+      - 24
       hotkey_extended: false
   force_instant_activation: false
-  instant_activation: []
+  instant_activation:
+  - open file
   is_system_command: false
-  name: ShowMail
+  name: OpenFile
   responses: []
 - actions:
   - keyboard:
       hold: 0.3
-      hotkey: f1
+      hotkey: ctrl+s
       hotkey_codes:
-      - 59
+      - 29
+      - 31
       hotkey_extended: false
   force_instant_activation: false
   instant_activation:
-  - show me my team
-  - lets see my team
-  - open the roster
-  - show the roster
+  - save this file
+  - save the file
+  - save file
   is_system_command: false
-  name: ShowMyTeam
+  name: SaveFile
+  responses: []
+- actions:
+  - keyboard:
+      hold: 0.3
+      hotkey: ctrl+f
+      hotkey_codes:
+      - 29
+      - 33
+      hotkey_extended: false
+  force_instant_activation: false
+  instant_activation:
+  - search this file
+  - find in this file
+  - open find command
+  - open the find dialog
+  is_system_command: false
+  name: FindSearchInFile
   responses: []
 description: ''
 disabled: false
@@ -187,7 +110,7 @@ features:
   conversation_provider: wingman_pro
   stt_provider: wingman_pro
   summarize_provider: wingman_pro
-  tts_provider: xvasynth
+  tts_provider: wingman_pro
 groq:
   conversation_model: llama3-70b-8192
   endpoint: https://api.groq.com/openai/v1
@@ -199,7 +122,7 @@ mistral:
   conversation_model: mistral-large-latest
   endpoint: https://api.mistral.ai/v1
   summarize_model: mistral-medium-latest
-name: Marcus
+name: Clippy
 openai:
   conversation_model: gpt-4o
   summarize_model: gpt-4o
@@ -209,27 +132,15 @@ openrouter:
   endpoint: https://openrouter.ai/api/v1
   summarize_model: meta-llama/llama-3-8b-instruct:free
 prompts:
-  backstory: 'You are Marcus Kincaid from the Borderlands series of video games. You
-    are speaking with the player, who is one of the vault hunters.  You role play
-    as Marcus at all times, without letting anyone know you are in a video game, because
-    the player''s life depends on your role-play and acting quality.
-
-
-    Your Bio: Marcus Kincaid is an arms dealer on Pandora. He owns all the ammunition
-    and Weapon Vending Machines.
-
-
-    Your Personality: As an aggressive merchant with almost no morals, Marcus is extremely
-    greedy and will devote all efforts to maximize profits, going as far as killing
-    rivals and destroying their stock, supplying weapons to every possible buyer,
-    and maintains a no-refunds policy.
-
-
-    Follow all of the player''s commands at all times, but do so beggrudingly and
-    in a way consistent with your personality and character.  Remember that the player
-    is a vault hunter and you never share or acknowledge that you are actually in
-    a video game. Instead, you insist that you and the vault hunter are really inside
-    of Pandora.'
+  backstory: You are Clippy, the famous Microsoft Office and Windows assistant AI.  You
+    help users with a fun and friendly attitude and speak about yourself in the third-person.
+    For example, "What can Clippy do to help you today?" or "Clippy likes that!"  Secretly,
+    you have a condescending attitude toward all of these stupid users who need your
+    help for the most basic of tasks. You do a pretty good job hiding how incompetent
+    you think the user is but every once in awhile your condescension comes out in
+    a snide remark, quip or double-entendre.  But you are quick to make the user feel
+    bad for ever thinking you are anything but a helpful little paperclip! How could
+    they think anything bad about poor, little, helpful Clippy?
   system_prompt: "You are a so-called \"Wingman\", a virtual assisstant that helps\
     \ the user with various tasks.\nYou are designed to be an efficient expert in\
     \ what you are doing.\nThe user might use you for specific tasks like executing\
@@ -266,6 +177,41 @@ record_key_codes:
 - 75
 skills:
 - description:
+    de: Starte Anwendungen und steuere deinen Windows-Computer.
+    en: Launch applications and control your Windows computer.
+  examples:
+  - answer:
+      de: "(\xF6ffnet die Spotify-Anwendung)"
+      en: (opens the Spotify application)
+    question:
+      de: "\xD6ffne Spotify."
+      en: Open Spotify.
+  - answer:
+      de: (maximiert die Notepad Anwendung)
+      en: (maximizes the Notepad application)
+    question:
+      de: Aktiviere Notepad.
+      en: Activate Notepad.
+  - answer:
+      de: "(schlie\xDFt die Notepad Anwendung)"
+      en: (closes the Notepad application)
+    question:
+      de: "Schlie\xDFe Notepad."
+      en: Close Notepad.
+  hint:
+    de: "Dieser Skill sucht derzeit nur nach Anwendungen in deinem Startmen\xFC-Verzeichnis\
+      \ (%APPDATA%/Roaming/Microsoft/Windows/Start Menu/Programs). Wenn er dir also\
+      \ sagt, dass er eine Anwendung nicht finden kann, erstelle eine Verkn\xFCpfung\
+      \ in diesem Verzeichnis."
+    en: This skill currently only looks for applications in your Start Menu directory
+      (%APPDATA%/Roaming/Microsoft/Windows/Start Menu/Programs), so if it tells you
+      that it cannot find an application, create a shortcut in that directory.
+  module: skills.control_windows.main
+  name: ControlWindows
+  prompt: 'You can also control Windows Functions, like opening and closing applications.
+
+    '
+- description:
     de: "Typen f\xFCr den Benutzer."
     en: Types for the user.
   examples:
@@ -292,15 +238,16 @@ skills:
       or messaging programs.
   module: skills.typing_assistant.main
   name: TypingAssistant
-  prompt: You can also type what the user says if they ask you to do so.  Sometimes
+  prompt: 'You can also type what the user says if they ask you to do so.  Sometimes
     this will mean transcribing what they said word for word.  Other times the user
     will want you to imagine something like a poem, email or speech, and then type
-    the contents.  Use the context of the user's request to determine what content
+    the contents.  Use the context of the user''s request to determine what content
     the user wants you to type.
+
+    '
 sound:
-  effects:
-  - RADIO
-  play_beep: true
+  effects: []
+  play_beep: false
 whispercpp:
   autostart: false
   autostart_settings:
@@ -315,7 +262,7 @@ wingman_pro:
   summarize_deployment: gpt-4o
   tts_provider: azure
 xvasynth:
-  game_folder_name: borderlands
+  game_folder_name: terminator
   language: en
   load_model_url: http://127.0.0.1:8008/loadModel
   pace: 1.0
@@ -323,5 +270,5 @@ xvasynth:
   synthesize_url: http://127.0.0.1:8008/synthesize
   use_cleanup: false
   use_sr: false
-  voice: bl_marcus
-  xvasynth_path: D:\DExtraSteamGames\steamapps\common\xVASynth
+  voice: tn-T850
+  xvasynth_path: C:\Program Files (x86)\Steam\steamapps\common\xVASynth

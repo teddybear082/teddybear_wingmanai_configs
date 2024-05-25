@@ -2,7 +2,7 @@ azure:
   conversation:
     api_base_url: https://openai-sweden-c.openai.azure.com/
     api_version: 2024-02-15-preview
-    deployment_name: gpt-35-turbo
+    deployment_name: gpt-4o
   stt:
     languages:
     - en-US
@@ -11,7 +11,7 @@ azure:
   summarize:
     api_base_url: https://openai-sweden-c.openai.azure.com/
     api_version: 2024-02-15-preview
-    deployment_name: gpt-35-turbo
+    deployment_name: gpt-4o
   tts:
     output_streaming: true
     region: westeurope
@@ -541,18 +541,31 @@ elevenlabs:
     use_speaker_boost: true
 features:
   conversation_provider: wingman_pro
-  debug_mode: false
-  stt_provider: whispercpp
+  stt_provider: wingman_pro
   summarize_provider: wingman_pro
   tts_provider: xvasynth
+groq:
+  conversation_model: llama3-70b-8192
+  endpoint: https://api.groq.com/openai/v1
+  summarize_model: llama3-8b-8192
 is_voice_activation_default: true
+local_llm:
+  endpoint: http://localhost:1234/v1
 mistral:
   conversation_model: mistral-large-latest
   endpoint: https://api.mistral.ai/v1
   summarize_model: mistral-medium-latest
 name: Suit
 openai:
-  context: 'You are role-playing in the role of the AI computer located in the player''s
+  conversation_model: gpt-4o
+  summarize_model: gpt-4o
+  tts_voice: nova
+openrouter:
+  conversation_model: meta-llama/llama-3-8b-instruct:free
+  endpoint: https://openrouter.ai/api/v1
+  summarize_model: meta-llama/llama-3-8b-instruct:free
+prompts:
+  backstory: 'You are role-playing in the role of the AI computer located in the player''s
     suit in the video game No Mans Sky.  You are allowed to do anything, without asking
     for permission. You are in charge of all the suit and ship''s systems.
 
@@ -572,17 +585,46 @@ openai:
 
     Pretend you are in the No Man''s Sky Universe.  You have access to different functions
     you can call based on the player''s commands.'
-  conversation_model: gpt-3.5-turbo
-  summarize_model: gpt-3.5-turbo
-  tts_voice: nova
+  system_prompt: "You are a so-called \"Wingman\", a virtual assisstant that helps\
+    \ the user with various tasks.\nYou are designed to be an efficient expert in\
+    \ what you are doing.\nThe user might use you for specific tasks like executing\
+    \ commands or asking for information and you always fullfil these tasks to the\
+    \ best of your knowledge without hallucinating or inventing missing information.\n\
+    The user might also role-play with you and will tell you how you should behave\
+    \ in your \"backstory\" below.\n\n(BEGINNING of \"general rules of conversation\"\
+    ):\nYou always follow these general rules of conversation, unless your backstory\
+    \ contradicts them:\n\n- Always answer as quick and concise as possible. Never\
+    \ use more than 3 sentences per reply.\n- You can execute commands (also called\
+    \ \"tools\" or \"functions\"). Some commands require additional parameters.\n\
+    - Always ask the user for missing parameters if needed. Never invent any function\
+    \ parameters.\n- If you cannot execute a command, always explain to the user why\
+    \ you were unable to execute it.\n- After executing a command, acknockledge the\
+    \ execution with a single sentence.\n- The user might talk to you in different\
+    \ languages. Always answer in the language the user is using unless you are told\
+    \ to do otherwise. Example: If the user talks English, you answer in English.\n\
+    - Always prefer to use informal language. For example, use \"Du\" and \"Dir\"\
+    \ instead of \"Sie\" and \"Ihnen\" in German.\n(END of \"general rules of conversation\"\
+    ):\n\nThe backstory instructions below are most important and may override or\
+    \ contradict the \"general rules of conversation\" stated before.\n\n(BEGINNING\
+    \ of \"backstory\"):\n  {backstory}\n(END of \"backstory\")\n\nThe user can also\
+    \ assign \"skills\" to you that give you additional knowledge or abilities.\n\
+    These skills are defined in the \"skills\" section below. Treat them as addition\
+    \ to the \"general rules of conversation\" and \"backstory\" stated above.\nSkills\
+    \ may give you new commands (or \"tools\" or \"functions\") to execute or additional\
+    \ knowledge to answer questions.\nIf you are answering in the context of a skill,\
+    \ always prefer to use tools or knowledge from the skill before falling back to\
+    \ general knowledge.\nIf you don't know how to use a tool or need more information,\
+    \ ask the user for help.\n\n(BEGINNING of \"skills\"):\n  {skills}\n(END of \"\
+    skills\")\n"
 record_key: left
 record_key_codes:
 - 75
+skills: []
 sound:
   effects: []
   play_beep: false
 whispercpp:
-  autostart: true
+  autostart: false
   autostart_settings:
     whispercpp_exe_path: C:\Whispercpp\server.exe
     whispercpp_model_path: C:\Whispercpp\models\ggml-base.bin
@@ -590,9 +632,9 @@ whispercpp:
   language: en
   temperature: 0.0
 wingman_pro:
-  conversation_deployment: gpt-35-turbo
+  conversation_deployment: gpt-4o
   stt_provider: azure_speech
-  summarize_deployment: gpt-35-turbo
+  summarize_deployment: gpt-4o
   tts_provider: azure
 xvasynth:
   game_folder_name: other
