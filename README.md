@@ -11,7 +11,7 @@ Steps to use:
 ![image](https://github.com/teddybear082/teddybear_wingmanai_configs/assets/87204721/fa3a0ddf-c950-4cc2-a6af-d85374e63d03)
 
 
-Then put the typing_assistant skill folder into your Wingmanai User Directory.  This is typically **%AppData%/Roaming/ShipBit/WingmanAI/[release number]/skills**:
+Then put the typing_assistant skill folder and web_search folder into your Wingmanai User Directory.  This is typically **%AppData%/Roaming/ShipBit/WingmanAI/[release number]/skills**:
 
 ![image](https://github.com/teddybear082/teddybear_wingmanai_configs/assets/87204721/40ab4f0f-5234-45d9-8f10-392832f750fe)
 
