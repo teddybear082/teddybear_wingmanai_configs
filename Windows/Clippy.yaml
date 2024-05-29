@@ -245,6 +245,30 @@ skills:
     the user wants you to type.
 
     '
+- description:
+    de: Sucht im Internet nach Antworten auf eine Benutzerfrage.
+    en: Searches the web (google) for a user query.
+  examples:
+  - answer:
+      de: "Ich habe folgende Nachrichten \xFCber Star Citizen gefunden..."
+      en: I found the following news about Star Citizen...
+    question:
+      de: "Suche im Internet nach aktuellen Nachrichten \xFCber Star Citizen und gib\
+        \ mir die H\xF6hepunkte."
+      en: Search the internet for recent news about Star Citizen and give me the highlights.
+  hint:
+    de: "Diese F\xE4higkeit sucht im Internet nach Informationen, basierend auf Ihren\
+      \ Angaben. Versuchen Sie, Ihre Anfrage mit 'Suche im Web nach...' oder 'Suche\
+      \ im Internet nach...' zu beginnen."
+    en: This skill searches the internet based on what the user says.  It may help
+      if you specifically say "search the web for..." or "search the internet for..."
+  module: skills.web_search.main
+  name: WebSearch
+  prompt: 'You can also search the internet for topics identified by the user, or
+    if the user asks you a question that requires knowledge of current events, like
+    questions about "today", "this week" or "this month."
+
+    '
 sound:
   effects: []
   play_beep: false
