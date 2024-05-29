@@ -42,6 +42,6 @@ features:
 
 And change stt_provider to wingman_pro instead of whispercpp.
 
-7. Now run wingman AI and, if there were no installation errors in the install, you should now be able to use these additional wingmen.
+7. Now run wingman AI and, if there were no installation errors in the install, you should now be able to use these additional wingmen.  If you load a wingman, like the Clippy wingman or try to use a skill, like the web_search skill in another wingman, and WingmanAI indicates there are errors due to missing modules, then download this release of additional files here: https://github.com/teddybear082/teddybear_wingmanai_configs/releases/download/_internal_wingman_ai_folder_additions/add_to_wingman_internal_folder.zip and unzip the files contained in there into your _internal folder that is in the wingmanai install directory (same location as WingmanAI.exe and WingmanAiCore.exe).  That adds the additional built-in python libraries for Python 3.11.7 that are not bundled with WingmanAI because they are not used by the core WingmanAI functions.
 
 8. Note that you can make further adjustments to the Wingmen, and possibly make the config changes above, with the WingmanAI user interface, and without manually editing the .yaml files.
